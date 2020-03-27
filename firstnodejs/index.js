@@ -9,8 +9,9 @@ app.get("/se",(req,res)=>{
 
 //get with parameters
 app.get("/se/:seNO",(req,res)=>{
-  const seNumber=req.params.seNO;
-  return res.json(seNumber);
+  //const seNumber=req.params.seNO;
+ // return res.json(seNumber);
+  return res.json(req.params.seNO);
 
 });
 
