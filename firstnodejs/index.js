@@ -7,17 +7,24 @@ app.get("/se",(req,res)=>{
     return res.json("get request");
 });
 
-app.put("/se",(req,res)=>{
-    return res.json("put request");
+//get with parameters
+app.get("/se/:seNO",(req,res)=>{
+  const seNumber=req.params.seNO;
+  return res.json(seNumber);
+
 });
 
-app.post("/se",(req,res)=>{
-    return res.json("post request");
-});
+// app.put("/se",(req,res)=>{
+//     return res.json("put request");
+// });
 
-app.delete("/se",(req,res)=>{
-    return res.json("delete request");
-});
+// app.post("/se",(req,res)=>{
+//     return res.json("post request");
+// });
+
+// app.delete("/se",(req,res)=>{
+//     return res.json("delete request");
+// });
 
 const PORT=process.env.PORT || 5000;
 
