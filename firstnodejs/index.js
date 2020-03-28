@@ -1,6 +1,12 @@
 const express=require("express");
 
+//create routes
+const postRequest=require("./routes/post/postWithParams");
+
+
 const app=express();
+
+app.use(postRequest);
 
 //get
 app.get("/se",(req,res)=>{
@@ -38,10 +44,10 @@ return res.json(seNumber);
 
 //post with params
 
-app.post("/se/:seNO",(req,res)=>{
-    const seNumber=req.params.seNO;
-    return res.json(seNumber);
-});
+// app.post("/se/:seNO",(req,res)=>{
+//     const seNumber=req.params.seNO;
+//     return res.json(seNumber);
+// });
 
 //delete
  app.delete("/se",(req,res)=>{
