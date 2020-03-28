@@ -17,9 +17,9 @@ app.get("/se/:seNO",(req,res)=>{
 
 //put
 
-// app.put("/se",(req,res)=>{
-//     return res.json("put request");
-// });
+ app.put("/se",(req,res)=>{
+     return res.json("put request");
+ });
 
 // put with params
 
@@ -32,9 +32,9 @@ return res.json(seNumber);
 
 //post
 
-// app.post("/se",(req,res)=>{
-//     return res.json("post request");
-// });
+ app.post("/se",(req,res)=>{
+     return res.json("post request");
+ });
 
 //post with params
 
@@ -43,9 +43,17 @@ app.post("/se/:seNO",(req,res)=>{
     return res.json(seNumber);
 });
 
-// app.delete("/se",(req,res)=>{
-//     return res.json("delete request");
-// });
+//delete
+ app.delete("/se",(req,res)=>{
+    return res.json("delete request");
+ });
+
+//delete with params
+
+app.delete("/se/:seNO",(req,res)=>{
+        const seNumber=req.params.seNO;
+        return res.json(seNumber);
+});
 
 const PORT=process.env.PORT || 5000;
 
