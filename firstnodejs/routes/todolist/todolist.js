@@ -16,8 +16,11 @@ let toDos=[
           ];
 
 const router=Router();
-router.get("/todolist",(req,res)=>{
-    return res.json(toDos);
+router.get("/todolist/:num",(req,res)=>{
+    const num=req.params.num;
+
+    return res.json(toDos[num-1]);
+
 });
 
 module.exports =router;        
