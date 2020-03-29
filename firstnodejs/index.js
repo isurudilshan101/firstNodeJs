@@ -8,7 +8,7 @@ const express=require("express");
 const todolist=require("./routes/todolist/todolist");
 const app=express();
 
-//midlewarew
+//midleware
 
 app.use(express.json());
 
