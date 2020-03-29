@@ -2,11 +2,18 @@ const express=require("express");
 
 //create routes
 const postRequest=require("./routes/post/postWithParams");
+const postWithBody=require("./routes/post/postWithBody");
+
 
 
 const app=express();
 
+//midlewarew
+
+app.use(express.json());
+
 app.use(postRequest);
+app.use(postWithBody);
 
 //get
 app.get("/se",(req,res)=>{
