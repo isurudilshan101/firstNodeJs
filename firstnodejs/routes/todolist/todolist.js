@@ -16,6 +16,14 @@ let toDos=[
           ];
 
 const router=Router();
+
+router.get("/todolist",(req,res)=>{
+    const num=req.params.num;
+
+    return  res.json(toDos);
+});
+
+//get one todo by index
 router.get("/todolist/:num",(req,res)=>{
     const num=req.params.num;
 
@@ -23,4 +31,14 @@ router.get("/todolist/:num",(req,res)=>{
 
 });
 
-module.exports =router;        
+//get todo by id
+
+router.get("/todo/:id",(req,res)=>{
+    const id=req.params.id;
+    const todo=toDos.filter(todo=>todo.id === id);
+    return res.json(todo);
+
+});
+
+
+module.exports =router;          
