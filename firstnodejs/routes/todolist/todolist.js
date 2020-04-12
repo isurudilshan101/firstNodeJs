@@ -39,6 +39,16 @@ router.get("/todo/:id",(req,res)=>{
     return res.json(todo);
 
 });
+ 
+//Add todo to list
+router.post("/addTodo",(req,res)=>{
+    const body=req.body;
+    body.id=uuid();
+    toDos=[...toDos, body];
+    return res.json(toDos);
+});
+
+
 
 
 module.exports =router;          
