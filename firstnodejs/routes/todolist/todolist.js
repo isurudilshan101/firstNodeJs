@@ -48,7 +48,18 @@ router.post("/addTodo",(req,res)=>{
     return res.json(toDos);
 });
 
+//delete todo from list 
 
+router.delete("/deletetodo/:id",(req,res)=>{
+    const id=req.params.id;
+    const isHere=toDos.some(todo=>todo.id===id)
+    if(!isHere){
+        return res.json("todo no found");
+    }
+   const newtoDos=toDos.filter(todo=>todo.id!==id);
+   toDos=newtoDos;
+   return res.json(toDos);    
+});
 
 
 module.exports =router;          
