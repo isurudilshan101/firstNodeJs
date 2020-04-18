@@ -12,6 +12,12 @@ let toDos=[
                 id:uuid(),
                 title: "Learn react",
                 description: "Learn react with express"
+             },
+
+             {
+                id:uuid(),
+                title: "Learn viue",
+                description: "Learn react with viuex"
              }
           ];
 
@@ -52,6 +58,7 @@ router.post("/addTodo",(req,res)=>{
 
 router.delete("/deletetodo/:id",(req,res)=>{
     const id=req.params.id;
+    const body=req.body;
     const isHere=toDos.some(todo=>todo.id===id)
     if(!isHere){
         return res.json("todo no found");
@@ -59,6 +66,23 @@ router.delete("/deletetodo/:id",(req,res)=>{
    const newtoDos=toDos.filter(todo=>todo.id!==id);
    toDos=newtoDos;
    return res.json(toDos);    
+});
+
+//edit todo from list 
+
+router.put("/editTodo/:id",(req,res)=>{
+    const id=req.params.id;
+    const isHere=toDos.some(todo=>todo.id===id);
+    if(!isHere){
+        return res.json("todo not found");
+    } 
+    const newtoDos=toDos.filter(todo=>todo.id!==id);
+    toDos=newtoDos;
+    
+    let newTodo={id, ...body};
+    toDos=[newTodo, ...toDos];
+    return res.json(toDos);
+
 });
 
 
