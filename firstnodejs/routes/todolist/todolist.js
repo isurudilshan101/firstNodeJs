@@ -58,7 +58,7 @@ router.post("/addTodo",(req,res)=>{
 
 router.delete("/deletetodo/:id",(req,res)=>{
     const id=req.params.id;
-    const body=req.body;
+   
     const isHere=toDos.some(todo=>todo.id===id)
     if(!isHere){
         return res.json("todo no found");
@@ -71,17 +71,33 @@ router.delete("/deletetodo/:id",(req,res)=>{
 //edit todo from list 
 
 router.put("/editTodo/:id",(req,res)=>{
-    const id=req.params.id;
-    const isHere=toDos.some(todo=>todo.id===id);
-    if(!isHere){
-        return res.json("todo not found");
-    } 
-    const newtoDos=toDos.filter(todo=>todo.id!==id);
-    toDos=newtoDos;
+    // const id=req.params.id;
+    // const body=req.body;
+    // const isHere=toDos.some(todo=>todo.id===id);
+    // if(!isHere){
+    //     return res.json("todo not found");
+    // } 
+    // const newToDos=toDos.filter(todo=>todo.id!==id);
+    // toDos=newToDos;
     
-    let newTodo={id, ...body};
-    toDos=[newTodo, ...toDos];
+    // let newTodo={id, ...body};
+    // toDos=[newTodo, ...toDos];
+    
+    //  return res.json(toDos);
+
+    const id=req.params.id;
+    const {title,description}=req.body;
+
+    const index=toDos.findIndex(todo=>todo.id===id);
+    //console.log(index);
+    if(index<0){
+        return res.json("todo not found");
+    }
+    toDos[index].title=title;
+    toDos[index].description=description;
     return res.json(toDos);
+    
+
 
 });
 
